@@ -228,7 +228,7 @@ export class CallAutomationClient {
       targets: [communicationIdentifierModelConverter(targetParticipant.targetParticipant)],
       callbackUri: callbackUrl,
       operationContext: options.operationContext,
-      azureCognitiveServicesEndpointUrl: options.azureCognitiveServicesEndpointUrl,
+      cognitiveServicesEndpoint: options.cognitiveServicesEndpoint,
       mediaStreamingConfiguration: options.mediaStreamingConfiguration,
       customContext: {
         sipHeaders: targetParticipant.customContext?.sipHeaders,
@@ -259,7 +259,7 @@ export class CallAutomationClient {
       targets: targetParticipants.map((target) => communicationIdentifierModelConverter(target)),
       callbackUri: callbackUrl,
       operationContext: options.operationContext,
-      azureCognitiveServicesEndpointUrl: options.azureCognitiveServicesEndpointUrl,
+      cognitiveServicesEndpoint: options.cognitiveServicesEndpoint,
       mediaStreamingConfiguration: options.mediaStreamingConfiguration,
       customContext: {
         sipHeaders: options.customContext?.sipHeaders,
@@ -285,14 +285,14 @@ export class CallAutomationClient {
   ): Promise<AnswerCallResult> {
     const {
       mediaStreamingConfiguration,
-      azureCognitiveServicesEndpointUrl,
+      cognitiveServicesEndpoint,
       operationContext,
       ...operationOptions
     } = options;
     const request: AnswerCallRequest = {
       incomingCallContext,
       mediaStreamingConfiguration,
-      azureCognitiveServicesEndpointUrl,
+      cognitiveServicesEndpoint,
       operationContext,
       callbackUri: callbackUrl,
       answeredByIdentifier: this.sourceIdentity,
